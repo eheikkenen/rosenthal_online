@@ -123,7 +123,6 @@ const drawPlots = () => {
   // get temperatures
   for (let i = 0; i < steps; i++) {
     for (let j = 0; j < steps; j++) {
-    debugger;
       z[i][j] = rosenthal(x[i], y[j], 0, values.initialTemp, values.power, values.thermalConductivity, values.velocity, alpha);
       if (z[i][j] > 3000) {z[i][j] = 3000;}
       }
@@ -136,6 +135,8 @@ const drawPlots = () => {
       type: 'contour'
       }
     ];
+
+    var layout = { title: 'X-Y Plot (Z = 0)'); }
 
     Plotly.newPlot('plotlyDiv', data);
 }
