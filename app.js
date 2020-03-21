@@ -1,7 +1,7 @@
 const modelParams = {
-  x: { min: 0, max: 100, default: 50 },
-  y: { min: 0, max: 100, default: 50 },
-  z: { min: 0, max: 100, default: 50 },
+  x: { min: 50, max: 200, default: 100 },
+  y: { min: 50, max: 200, default: 100 },
+  z: { min: 50, max: 200, default: 100 },
   initialTemp: { min: 0, max: 100, default: 50 },
   power: { min: 0, max: 100, default: 50 },
   thermalConductivity: { min: 0, max: 100, default: 50 },
@@ -20,34 +20,12 @@ const setFormFromUrlBar = () => {
   const params = getUrlParams();
   const elements = formElements();
 
-  elements.x.value = params.x;
-  elements.x.min = modelParams.x.min
-  elements.x.max = modelParams.x.max
+  for (key in params) {
+    elements[key].value = params[key];
+    elements[key].min = modelParams[key].min
+    elements[key].max = modelParams[key].max
+  }
 
-  elements.y.value = params.y;
-  elements.y.min = modelParams.y.min
-  elements.y.max = modelParams.y.max
-
-  elements.z.value = params.z;
-  elements.z.min = modelParams.z.min
-  elements.z.max = modelParams.z.max
-
-  elements.power.value = params.power;
-  elements.power.min = modelParams.power.min
-  elements.power.max = modelParams.power.max
-
-  elements.initialTemp.value = params.initialTemp;
-  elements.initialTemp.min = modelParams.initialTemp.min
-  elements.initialTemp.max = modelParams.initialTemp.max
-
-  elements.velocity.value = params.velocity;
-  elements.velocity.min = modelParams.velocity.min
-  elements.velocity.max = modelParams.velocity.max
-
-  elements.thermalConductivity.value = params.thermalConductivity;
-  elements.thermalConductivity.min = modelParams.thermalConductivity.min
-  elements.thermalConductivity.max = modelParams.thermalConductivity.max
-  
   elements.xyGraph.width = params.x;
   elements.xyGraph.height = params.y;
 
@@ -56,15 +34,13 @@ const setFormFromUrlBar = () => {
 }
 
 const setUrlBarFromForm = () => {
-  params = {
-    x: document.getElementById("x").value,
-    y: document.getElementById("y").value,
-    z: document.getElementById("z").value,
-    power: document.getElementById("power").value,
-    initialTemp: document.getElementById("initialTemp").value,
-    velocity: document.getElementById("velocity").value ,
-    thermalConductivity: document.getElementById("thermalConductivity").value,
-  }
+  const elements = formElements();
+  params = 
+    Object.fromEntries(
+      Object.
+      keys(modelParams).
+      map(param => [param, elements[param].value])
+    )
   const searchString = (new URLSearchParams(params)).toString();
   history.replaceState(null, '', "?" + searchString)
 }
