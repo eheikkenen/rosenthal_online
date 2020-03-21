@@ -1,3 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 * {
   box-sizing: border-box;
+}
+
+.app {
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: red;
+  width: 100%;
+  height: 100vh;
+}
+
+.graphs {
+  width: 50%;
+  background-color: green;
+}
+
+.controls {
+  width: 50%;
+  background-color: blue;
 }
