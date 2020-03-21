@@ -104,8 +104,8 @@ const drawPlots = () => {
   for (let i = 0; i < steps; i++) {
     for (let j = 0; j < steps; j++) {
       //debugger;
-      z[i][j] = rosenthal(x[i], y[j], 0, values.initialTemp, values.power, values.thermalConductivity, values.velocity, alpha);
-      if (z[i][j] > 3000) {z[i][j] = 3000;}
+      z[j][i] = rosenthal(x[i], y[j], 0, values.initialTemp, values.power, values.thermalConductivity, values.velocity, alpha);
+      if (z[j][i] > 3000) {z[j][i] = 3000;}
       }
     }
 
