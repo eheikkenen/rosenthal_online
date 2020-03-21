@@ -109,22 +109,42 @@ const getTemperatures = () => {
 //}
 
 const drawPlots = () => {
-  const temperatures = getTemperatures();
-  const canvas = document.getElementById("xyGraph");
-  const ctx = canvas.getContext("2d");
+  //const temperatures = getTemperatures();
+  //const canvas = document.getElementById("xyGraph");
+  //const ctx = canvas.getContext("2d");
 
   const steps = 500;
 
+  // declare vars
+  var size = 500, x = new Array(size), y = new Array(size), z = new Array(size), i, j;
+
+  // get x and y values
+  for (var i = 0; i < size; i++) {
+  x[i] = -values.x + (2 * values.x / size) * i;
+  y[i] = -values.y + (2 * values.y / size) * i;
+  z[i] = new Array(size)
+  }
+
+  // get thermal diffusivity
+  const alpha = values.thermalConductivity / (8000 * 460);
+  
+  // get temperatures
   for (let i = 0; i < steps; i++) {
     for (let j = 0; j < steps; j++) {
-      if (temperatures[i * steps + j] > 1000) {temperatures[i * steps + j] = 1000}
+      z[i][j] = rosenthal(x[i], y[j], 0, values.initialTemp, values.power, values.thermalConductivity, values.velocity, alpha);
+
+      //if (temperatures[i * steps + j] > 1000) {temperatures[i * steps + j] = 1000}
       //const weight = (temperatures[i * steps + j] - 300) / (3000 - 300)
       //ctx.fillStyle = pickHex("rgb(0, 0, 255)", "rgb(255, 0, 0)", weight);
       //ctx.fillStyle = `rgb(${temperatures[i * steps + j] % 255}, 100, 100)`
-      ctx.fillStyle = `rgb(${(temperatures[i * steps + j] - 300) / (1000 - 300) * 255}, 0, 0)`
-      ctx.fillRect(i, j, 1, 1)
+      //ctx.fillStyle = `rgb(${(temperatures[i * steps + j] - 300) / (1000 - 300) * 255}, 0, 0)`
+      //ctx.fillRect(i, j, 1, 1)
       }
     }
+
+    var data = [ { z: z, x: x, y: y, type: 'contour'} ];
+
+    Plotly.newPlot('xyGraph', data);
 }
 
 setFormFromUrlBar();
