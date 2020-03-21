@@ -1,7 +1,6 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="app.js"></script>
     <title>Rosenthal Calculator</title>
   </head>
   <body>
@@ -15,40 +14,44 @@
         <div class="dimensions">
           <div class="control dimension">
             <label for="x">X</label>
-            <input type="number" id="x" name="x">
+            <input type="number" id="x" name="x" onchange="onFormChange()">
           </div>
 
           <div class="control dimension" style="margin: 0px 30px;">
             <label for="y">Y</label>
-            <input type="number" id="y" name="y">
+            <input type="number" id="y" name="y" onchange="onFormChange()">
           </div>
 
           <div class="control dimension">
             <label for="z">Z</label>
-            <input type="number" id="z" name="z">
+            <input type="number" id="z" name="z" onchange="onFormChange()">
           </div>
         </div>
 
         <div class="control">
           <label for="initialTemp">Initial Temp</label>
-          <input type="number" id="initialTemp">
+          <input type="number" id="initialTemp" onchange="onFormChange()">
         </div>
 
         <div class="control">
-          <label for="apparentPower">Apparent Power</label>
-          <input type="number" id="apparentPower">
+          <label for="power">Power</label>
+          <input type="number" id="power" onchange="onFormChange()">
         </div>
 
         <div class="control">
           <label for="thermalConductivity">Thermal Conductivity</label>
-          <input type="number" id="thermalConductivity">
+          <input type="number" id="thermalConductivity" onchange="onFormChange()">
         </div>
 
         <div class="control">
           <label for="velocity">Velocity</label>
-          <input type="number" id="velocity">
+          <input type="number" id="velocity" onchange="onFormChange()">
         </div>
       </div>
     </div>
   </body>
+
+  <footer>
+    <script src="app.js"></script>
+  </footer>
 </html>
