@@ -1,11 +1,11 @@
 const modelParams = {
-  x: { min: 50, max: 200, default: 100 },
-  y: { min: 50, max: 200, default: 100 },
-  z: { min: 50, max: 200, default: 100 },
-  initialTemp: { min: 0, max: 100, default: 50 },
-  power: { min: 0, max: 100, default: 50 },
-  thermalConductivity: { min: 0, max: 100, default: 50 },
-  velocity: { min: 0, max: 100, default: 50 }
+  x: { min: 0.001, max: 0.010, step: 0.001, default: 0.003 },
+  y: { min: 0.001, max: 0.010, step: 0.001, default: 0.001 },
+  z: { min: 0.001, max: 0.010, step: 0.001, default: 0.001 },
+  initialTemp: { min: 0, max: 2000, step: 25, default: 100 },
+  power: { min: 0, max: 100, step: 10, default: 50 },
+  thermalConductivity: { min: 0, max: 500, step: 1, default: 20 },
+  velocity: { min: 0, max: 5, step: 0.01, default: 1 }
 };
 
 const modelParamDefaults = Object.fromEntries(
@@ -24,6 +24,7 @@ const setFormFromUrlBar = () => {
     elements[key].value = params[key];
     elements[key].min = modelParams[key].min
     elements[key].max = modelParams[key].max
+    elements[key].step = modelParams[key].step
   }
 
   elements.xyGraph.width = params.x;
@@ -35,7 +36,7 @@ const setFormFromUrlBar = () => {
 
 const setUrlBarFromForm = () => {
   const elements = formElements();
-  params = 
+  params =
     Object.fromEntries(
       Object.
       keys(modelParams).
@@ -84,3 +85,4 @@ const rosenthal = (x, y, z, initialTemperature, power, lambda, velocity, alpha) 
 
 setFormFromUrlBar();
 setUrlBarFromForm();
+
