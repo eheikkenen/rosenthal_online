@@ -20,6 +20,11 @@ body {
   background-color: green;
 }
 
+.graph-bounds {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
 .controls {
   width: 50%;
   background-color: blue;
