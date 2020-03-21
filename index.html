@@ -1,44 +1,52 @@
 <html>
-<head>
-  <link rel="stylesheet" type="text/css" href="style.css"> 
-  <script src="app.js"></script>
-</head>
-<body>
-  <div class="app">
-    <div class="graphs">
-      <h1>Graphs</h1>
-      <canvas id="myCanvas" width="100" height="100" style="border:1px solid #000000;"></canvas>
-    </div>
-    <div class="controls">
-      <h1>Controls</h1>
-      <hr>
-      <div class="graph-bounds">
-        <h1>X: </h1>
-        <input type="number" id="x" name="x" min="1" max="5">
-        <h1>Y: </h1>
-        <input type="number" id="y" name="y" min="1" max="5">
-        <h1>Z: </h1>
-        <input type="number" id="z" name="z" min="1" max="5">
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="app.js"></script>
+    <title>Rosenthal Calculator</title>
+  </head>
+  <body>
+    <div class="app">
+      <div class="title">Rosenthal Calculator</div>
+      <div class="graphs">
+        <canvas class="graph" id="xyGraph" width="100" height="100" style="border:1px solid #000000;"></canvas>
+        <canvas class="graph" id="xzGraph" width="100" height="100" style="border:1px solid #000000;"></canvas>
       </div>
+      <div class="controls">
+        <div class="control">
+          <label for="x">X</label>
+          <input type="number" id="x" name="x">
+        </div>
 
-      <h1>Initial Temperature</h1>
-      <input type="range" min="1" max="100" value="50" class="slider" id="initialTemp">
-      <h1>Value: </h1>
+        <div class="control">
+          <label for="y">Y</label>
+          <input type="number" id="y" name="y">
+        </div>
 
-      <h1>Apparent Power</h1>
-      <input type="range" min="1" max="100" value="50" class="slider" id="apparentPower">
-      <h1>Value: </h1>
+        <div class="control">
+          <label for="z">Z</label>
+          <input type="number" id="z" name="z">
+        </div>
 
-      <h1>Thermal Conductivity</h1>
-      <input type="range" min="1" max="100" value="50" class="slider" id="thermalConductivity">
-      <h1>Value: </h1>
+        <div class="control">
+          <label for="initialTemp">Initial Temp</label>
+          <input type="number" id="initialTemp">
+        </div>
 
-      <h1>Velocity</h1>
-      <input type="range" min="1" max="100" value="50" class="slider" id="thermalConductivity">
-      <h1>Value: </h1>
+        <div class="control">
+          <label for="apparentPower">Apparent Power</label>
+          <input type="number" id="apparentPower">
+        </div>
 
-      <h1>α: <h1>
+        <div class="control">
+          <label for="thermalConductivity">Thermal Conductivity</label>
+          <input type="number" id="thermalConductivity">
+        </div>
+
+        <div class="control">
+          <label for="velocity">Velocity</label>
+          <input type="number" id="velocity">
+        </div>
+      </div>
     </div>
-  </div>
-</body>
+  </body>
 </html>
