@@ -117,10 +117,11 @@ const drawPlots = () => {
 
   for (let i = 0; i < steps; i++) {
     for (let j = 0; j < steps; j++) {
+      if (temperatures[i * steps + j] > 1000) {temperatures[i * steps + j] = 1000}
       //const weight = (temperatures[i * steps + j] - 300) / (3000 - 300)
       //ctx.fillStyle = pickHex("rgb(0, 0, 255)", "rgb(255, 0, 0)", weight);
       //ctx.fillStyle = `rgb(${temperatures[i * steps + j] % 255}, 100, 100)`
-      ctx.fillStyle = `rgb(${(temperatures[i * steps + j] - 300) / (3000 - 300) * 255}, 0, 0)`
+      ctx.fillStyle = `rgb(${(temperatures[i * steps + j] - 300) / (1000 - 300) * 255}, 0, 0)`
       ctx.fillRect(i, j, 1, 1)
       }
     }
