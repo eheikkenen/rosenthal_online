@@ -19,6 +19,8 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 3em;
+  box-shadow: 0 10px 6px -6px #777;
+  background-color: #f7f7f7;
 }
 
 .graphs {
@@ -31,13 +33,22 @@ body {
 
 .graph {
   margin: 10px;
+  box-shadow: 0 10px 6px -6px #777;
 }
 
 .controls {
   display: flex;
   flex-flow: column nowrap;
   margin: auto;
-  padding: 10px;
+  padding: 20px 50px;
+  box-shadow: 0 10px 6px -6px #777;
+  background-color: #f7f7f7;
+}
+
+.controls .dimensions {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
 }
 
 .control {
