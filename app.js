@@ -131,6 +131,7 @@ const drawPlots = () => {
   // get temperatures
   for (let i = 0; i < steps; i++) {
     for (let j = 0; j < steps; j++) {
+    debugger;
       z[i][j] = rosenthal(x[i], y[j], 0, values.initialTemp, values.power, values.thermalConductivity, values.velocity, alpha);
 
       //if (temperatures[i * steps + j] > 1000) {temperatures[i * steps + j] = 1000}
@@ -142,9 +143,15 @@ const drawPlots = () => {
       }
     }
 
-    var data = [ { z: z, x: x, y: y, type: 'contour'} ];
+    var data = [ {
+      z: z,
+      x: x,
+      y: y,
+      type: 'contour'
+      }
+    ];
 
-    Plotly.newPlot('xyGraph', data);
+    Plotly.newPlot('plotlyDiv', data);
 }
 
 setFormFromUrlBar();
