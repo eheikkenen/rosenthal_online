@@ -27,22 +27,10 @@ const setFormFromUrlBar = () => {
     elements[key].step = modelParams[key].step
   }
 
-  elements.xyGraph.width = params.x;
-  elements.xyGraph.height = params.y;
-
-  elements.xzGraph.width = params.x;
-  elements.xzGraph.height = params.z;
 }
 
 const setUrlBarFromForm = () => {
-  const elements = formElements();
-  params =
-    Object.fromEntries(
-      Object.
-      keys(modelParams).
-      map(param => [param, elements[param].value])
-    )
-  const searchString = (new URLSearchParams(params)).toString();
+  const searchString = (new URLSearchParams(formValues())).toString();
   history.replaceState(null, '', "?" + searchString)
 }
 
@@ -77,11 +65,56 @@ const formElements = () => ({
   xzGraph: document.getElementById("xzGraph"),
 })
 
+const formValues = () => {
+  const elements = formElements();
+  return Object.fromEntries(
+    Object.
+    keys(modelParams).
+    map(param => [param, Number(elements[param].value)])
+    )
+}
+
 const rosenthal = (x, y, z, initialTemperature, power, lambda, velocity, alpha) => {
   const r = Math.sqrt(x*x + y*y + z*z);
   const dt = power / (2 * Math.PI * lambda * r) * Math.exp(-velocity / (2 * alpha) * (r + x));
   return initialTemperature + dt;
 };
+
+const getTemperatures = () => {
+  const steps = 500;
+  const values = formValues();
+  const stepX = values.x / steps;
+  const stepY = values.y / steps;
+  const rho = 8000;
+  const cp = 460;
+  const alpha = values.thermalConductivity / (rho * cp);
+  
+  const temperatures = [];
+
+  for (let i = 0; i < steps; i++) {
+    for (let j = 0; j < steps; j++) {
+      const temp = rosenthal(i*stepX, j*stepY, 0, values.initialTemp, values.power, values.thermalConductivity, values.velocity, alpha);
+
+      temperatures[i * steps + j] = temp
+      }
+  }
+  return temperatures;
+}
+
+const drawPlots = () => {
+  const temperatures = getTemperatures();
+  const canvas = document.getElementById("xyGraph");
+  const ctx = canvas.getContext("2d");
+
+  const steps = 500;
+
+  for (let i = 0; i < steps; i++) {
+    for (let j = 0; j < steps; j++) {
+      ctx.fillStyle = `rgb(${temperatures[i * steps + j] % 255}, 100, 100)`
+      ctx.fillRect(i, j, 1, 1)
+      }
+    }
+}
 
 setFormFromUrlBar();
 setUrlBarFromForm();
