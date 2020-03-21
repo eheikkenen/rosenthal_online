@@ -132,7 +132,10 @@ const drawPlots = () => {
       z: z,
       x: x,
       y: y,
-      type: 'contour'
+      type: 'contour',
+      contours: {
+        coloring: 'heatmap'
+	}
       }
     ];
 
