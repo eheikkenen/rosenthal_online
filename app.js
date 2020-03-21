@@ -136,7 +136,7 @@ const drawPlots = () => {
       }
     ];
 
-    var layout = { title: 'X-Y Plot (Z = 0)'); }
+    var layout = { title: 'X-Y Plot (Z = 0)' }
 
     Plotly.newPlot('plotlyDiv', data);
 }
