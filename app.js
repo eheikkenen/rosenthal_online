@@ -51,6 +51,7 @@ const getUrlParams = () => {
 const onFormChange = () => {
   setUrlBarFromForm();
   setFormFromUrlBar();
+  drawPlots();
 }
 
 const formElements = () => ({
@@ -80,27 +81,6 @@ const rosenthal = (x, y, z, initialTemperature, power, lambda, velocity, alpha) 
   return initialTemperature + dt;
 };
 
-const getTemperatures = () => {
-  const steps = 500;
-  const values = formValues();
-  const stepX = values.x / steps;
-  const stepY = values.y / steps;
-  const rho = 8000;
-  const cp = 460;
-  const alpha = values.thermalConductivity / (rho * cp);
-  
-  const temperatures = [];
-
-  for (let i = 0; i < steps; i++) {
-    for (let j = 0; j < steps; j++) {
-      const temp = rosenthal(i*stepX, j*stepY, 0, values.initialTemp, values.power, values.thermalConductivity, values.velocity, alpha);
-
-      temperatures[i * steps + j] = temp
-      }
-  }
-  return temperatures;
-}
-
 const drawPlots = () => {
 
   const values = formValues();
@@ -123,6 +103,7 @@ const drawPlots = () => {
   // get temperatures
   for (let i = 0; i < steps; i++) {
     for (let j = 0; j < steps; j++) {
+      //debugger;
       z[i][j] = rosenthal(x[i], y[j], 0, values.initialTemp, values.power, values.thermalConductivity, values.velocity, alpha);
       if (z[i][j] > 3000) {z[i][j] = 3000;}
       }
@@ -141,9 +122,8 @@ const drawPlots = () => {
 
     var layout = { title: 'X-Y Plot (Z = 0)' }
 
-    Plotly.newPlot('plotlyDiv', data);
+    Plotly.newPlot('plotlyDiv', data, layout);
 }
 
-setFormFromUrlBar();
-setUrlBarFromForm();
+onFormChange();
 
