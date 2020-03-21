@@ -101,6 +101,13 @@ const getTemperatures = () => {
   return temperatures;
 }
 
+//function pickHex(color1, color2, weight) {
+//  var w1 = weight;
+//  var w2 = 1 - w1;
+//  var rgb = [Math.round(color1[0] * w1 + color2[0] * w2), Math.round(color1[1] * w1 + color2[1] * w2), Math.round(color1[2] * w1 + color2[2] * w2)];
+//  return rgb;
+//}
+
 const drawPlots = () => {
   const temperatures = getTemperatures();
   const canvas = document.getElementById("xyGraph");
@@ -110,7 +117,10 @@ const drawPlots = () => {
 
   for (let i = 0; i < steps; i++) {
     for (let j = 0; j < steps; j++) {
-      ctx.fillStyle = `rgb(${temperatures[i * steps + j] % 255}, 100, 100)`
+      //const weight = (temperatures[i * steps + j] - 300) / (3000 - 300)
+      //ctx.fillStyle = pickHex("rgb(0, 0, 255)", "rgb(255, 0, 0)", weight);
+      //ctx.fillStyle = `rgb(${temperatures[i * steps + j] % 255}, 100, 100)`
+      ctx.fillStyle = `rgb(${(temperatures[i * steps + j] - 300) / (3000 - 300) * 255}, 0, 0)`
       ctx.fillRect(i, j, 1, 1)
       }
     }
