@@ -2,10 +2,10 @@ const modelParams = {
   x: { min: 0.001, max: 0.010, step: 0.001, default: 0.003 },
   y: { min: 0.001, max: 0.010, step: 0.001, default: 0.001 },
   z: { min: 0.001, max: 0.010, step: 0.001, default: 0.001 },
-  initialTemp: { min: 0, max: 2000, step: 25, default: 100 },
-  power: { min: 0, max: 100, step: 10, default: 50 },
-  thermalConductivity: { min: 0, max: 500, step: 1, default: 20 },
-  velocity: { min: 0, max: 5, step: 0.01, default: 1 }
+  initialTemp: { min: 273, max: 2000, step: 25, default: 100 },
+  power: { min: 1, max: 100, step: 10, default: 50 },
+  thermalConductivity: { min: 1, max: 500, step: 1, default: 20 },
+  velocity: { min: 0.001, max: 5, step: 0.01, default: 1 }
 };
 
 const modelParamDefaults = Object.fromEntries(
@@ -34,17 +34,21 @@ const setUrlBarFromForm = () => {
   history.replaceState(null, '', "?" + searchString)
 }
 
+var foo;
+
 const getUrlParams = () => {
   let params = {...modelParamDefaults};
   const searchParams = new URLSearchParams(window.location.search);
 
   for (const [key, value] of searchParams) {
     if (key in modelParams) {
+      foo = searchParams;
       const {min: min, max: max} = modelParams[key];
-      if (Number(value) >= min && Number(value) <= max) { params[key] = Number(value); };
+      if (value != "" && Number(value) >= min && Number(value) <= max) {
+        params[key] = Number(value); 
+      };
     }
   }
-
   return params
 };
 
