@@ -1,11 +1,16 @@
 <html>
   <head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Rosenthal Calculator</title>
   </head>
   <body>
     <div class="app">
       <div class="title">Rosenthal Calculator</div>
+
+      <div id='plotlyDiv'></div>
+
       <div class="graphs">
         <canvas class="graph" id="xyGraph" width="500" height="500" style="border:1px solid #000000;"></canvas>
         <canvas class="graph" id="xzGraph" width="500" height="500" style="border:1px solid #000000;"></canvas>
