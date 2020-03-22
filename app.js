@@ -144,5 +144,44 @@ const drawPlots = () => {
     Plotly.newPlot('plotlyDiv', data, layout);
 };
 
-onFormChange();
+const setDefaults316 = () => {
+    const params = getUrlParams();
+    const elements = formElements();
+    elements["thermalConductivity"].value = 20;
+    elements["rho"].value = 8000;
+    elements["cp"].value = 500;
+    elements["meltingTemperature"].value = 1660;
+    drawPlots();
+};
 
+const setDefaultsTitanium = () => {
+    const params = getUrlParams();
+    const elements = formElements();
+    elements["thermalConductivity"].value = 6.7;
+    elements["rho"].value = 4430;
+    elements["cp"].value = 526;
+    elements["meltingTemperature"].value = 1900;
+    drawPlots();
+};
+
+const setDefaultsInconel = () => {
+    const params = getUrlParams();
+    const elements = formElements();
+    elements["thermalConductivity"].value = 11.4;
+    elements["rho"].value = 8200;
+    elements["cp"].value = 435;
+    elements["meltingTemperature"].value = 1575;
+    drawPlots();
+};
+
+const setDefaultsAluminum = () => {
+    const params = getUrlParams();
+    const elements = formElements();
+    elements["thermalConductivity"].value = 113;
+    elements["rho"].value = 2670;
+    elements["cp"].value = 900;
+    elements["meltingTemperature"].value = 850;
+    drawPlots();
+};
+
+onFormChange();
