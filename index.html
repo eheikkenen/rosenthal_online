@@ -1,63 +1,63 @@
-<html>
-  <head>
+<html lang="en">
+<head>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Rosenthal Calculator</title>
-  </head>
-  <body>
-    <div class="app">
-      <div class="title">Rosenthal Calculator</div>
+</head>
+<body>
+<div class="app">
+    <div class="title">Rosenthal Model</div>
 
-      <div id='plotlyDiv'></div>
+    <div id='plotlyDiv'></div>
 
-      <div class="controls">
+    <div class="controls">
         <div class="dimensions">
-          <div class="control dimension">
-            <label for="x">X</label>
-            <input type="number" id="x" name="x" onchange="onFormChange()">
-          </div>
+            <div class="control dimension">
+                <label for="x">X</label>
+                <input type="number" id="x" name="x" onchange="onFormChange()">
+            </div>
 
-          <div class="control dimension" style="margin: 0px 30px;">
-            <label for="y">Y</label>
-            <input type="number" id="y" name="y" onchange="onFormChange()">
-          </div>
+            <div class="control dimension" style="margin: 0 30px;">
+                <label for="y">Y</label>
+                <input type="number" id="y" name="y" onchange="onFormChange()">
+            </div>
 
-          <div class="control dimension">
-            <label for="z">Z</label>
-            <input type="number" id="z" name="z" onchange="onFormChange()">
-          </div>
+            <div class="control dimension">
+                <label for="z">Z</label>
+                <input type="number" id="z" name="z" onchange="onFormChange()">
+            </div>
         </div>
 
         <div class="control">
-          <label for="initialTemp">Preheat Temperature</label>
-          <input type="number" id="initialTemp" onchange="onFormChange()">
+            <label for="initialTemp">Preheat Temperature [K]</label>
+            <input type="number" id="initialTemp" onchange="onFormChange()">
         </div>
 
         <div class="control">
-          <label for="power">Power</label>
-          <input type="number" id="power" onchange="onFormChange()">
+            <label for="power">Power [W]</label>
+            <input type="number" id="power" onchange="onFormChange()">
         </div>
-        
-	<div class="control">
-          <label for="velocity">Velocity</label>
-          <input type="number" id="velocity" onchange="onFormChange()">
-        </div>
-
-	<div class="control">
-	  Material Properties
-	</div>
 
         <div class="control">
-          <label for="thermalConductivity">Thermal Conductivity</label>
-          <input type="number" id="thermalConductivity" onchange="onFormChange()">
+            <label for="velocity">Velocity [m/s]</label>
+            <input type="number" id="velocity" onchange="onFormChange()">
         </div>
 
-      </div>
+        <div class="control">
+            Material Properties
+        </div>
+
+        <div class="control">
+            <label for="thermalConductivity">Thermal Conductivity [W/(m*K)]</label>
+            <input type="number" id="thermalConductivity" onchange="onFormChange()">
+        </div>
+
     </div>
-  </body>
+</div>
+</body>
 
-  <footer>
+<footer>
     <script src="app.js"></script>
-  </footer>
+</footer>
 </html>
