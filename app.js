@@ -5,7 +5,9 @@ const modelParams = {
     initialTemp: {min: 273, max: 2000, step: 25, default: 393},
     power: {min: 1, max: 5000, step: 10, default: 200},
     thermalConductivity: {min: 1, max: 500, step: 1, default: 20},
-    velocity: {min: 0.001, max: 5, step: 0.01, default: 1}
+    velocity: {min: 0.001, max: 5, step: 0.01, default: 1},
+    rho: {min: 1, max: 20000, step: 100, default: 8000},
+    cp: {min: 1, max: 1500, step: 50, default: 500}
 };
 
 const modelParamDefaults = Object.fromEntries(
@@ -18,7 +20,7 @@ const setFormFromUrlBar = () => {
     const params = getUrlParams();
     const elements = formElements();
 
-    for (key in params) {
+    for (let key in params) {
         elements[key].value = params[key];
         elements[key].min = modelParams[key].min
         elements[key].max = modelParams[key].max
@@ -61,8 +63,10 @@ const formElements = () => ({
     initialTemp: document.getElementById("initialTemp"),
     velocity: document.getElementById("velocity"),
     thermalConductivity: document.getElementById("thermalConductivity"),
-    xyGraph: document.getElementById("xyGraph"),
-    xzGraph: document.getElementById("xzGraph"),
+    rho: document.getElementById("rho"),
+    cp: document.getElementById("cp")
+    // xyGraph: document.getElementById("xyGraph"),
+    // xzGraph: document.getElementById("xzGraph"),
 });
 
 const formValues = () => {
@@ -93,7 +97,7 @@ const drawPlots = () => {
     }
 
     // get thermal diffusivity
-    const alpha = values.thermalConductivity / (8000 * 460);
+    const alpha = values.thermalConductivity / (values.rho * values.cp);
 
     // get temperatures
     for (let i = 0; i < size; i++) {
