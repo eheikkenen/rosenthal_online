@@ -124,7 +124,21 @@ const drawPlots = () => {
       }
     ];
 
-    var layout = { title: 'X-Y Plot (Z = 0)' }
+    //var layout = {
+    //  title: 'X-Y Plot',
+    //}
+
+    var layout = {
+      title: {
+        text: 'X-Y Plot'
+      },
+      xaxis: {
+        text: 'X Axis [m]'
+      },
+      YAXIS: {
+        text: 'Y Axis [m]'
+      }
+    }
 
     Plotly.newPlot('plotlyDiv', data, layout);
 }
