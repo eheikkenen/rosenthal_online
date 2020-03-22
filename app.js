@@ -1,7 +1,7 @@
 const modelParams = {
     x: {min: 0.001, max: 0.010, step: 0.001, default: 0.003},
     y: {min: 0.001, max: 0.010, step: 0.001, default: 0.001},
-    z: {min: 0.001, max: 0.010, step: 0.001, default: 0.001},
+    // z: {min: 0.001, max: 0.010, step: 0.001, default: 0.001},
     initialTemp: {min: 273, max: 2000, step: 25, default: 393},
     power: {min: 1, max: 5000, step: 10, default: 200},
     thermalConductivity: {min: 1, max: 500, step: 1, default: 20},
@@ -58,15 +58,13 @@ const onFormChange = () => {
 const formElements = () => ({
     x: document.getElementById("x"),
     y: document.getElementById("y"),
-    z: document.getElementById("z"),
+    // z: document.getElementById("z"),
     power: document.getElementById("power"),
     initialTemp: document.getElementById("initialTemp"),
     velocity: document.getElementById("velocity"),
     thermalConductivity: document.getElementById("thermalConductivity"),
     rho: document.getElementById("rho"),
     cp: document.getElementById("cp")
-    // xyGraph: document.getElementById("xyGraph"),
-    // xzGraph: document.getElementById("xzGraph"),
 });
 
 const formValues = () => {
