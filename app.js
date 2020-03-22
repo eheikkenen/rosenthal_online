@@ -116,6 +116,10 @@ const drawPlots = () => {
         type: 'contour',
         contours: {
             coloring: 'heatmap'
+        },
+        colorbar: {
+            title: 'Temperature [K]',
+            titleside: 'right'
         }
     }
     ];
