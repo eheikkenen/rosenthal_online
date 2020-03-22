@@ -7,7 +7,8 @@ const modelParams = {
     thermalConductivity: {min: 1, max: 500, step: 1, default: 20},
     velocity: {min: 0.001, max: 5, step: 0.01, default: 1},
     rho: {min: 1, max: 20000, step: 100, default: 8000},
-    cp: {min: 1, max: 1500, step: 50, default: 500}
+    cp: {min: 1, max: 1500, step: 50, default: 500},
+    meltingTemperature: {min: 200, max: 5000, step: 100, default: 1660}
 };
 
 const modelParamDefaults = Object.fromEntries(
@@ -64,7 +65,8 @@ const formElements = () => ({
     velocity: document.getElementById("velocity"),
     thermalConductivity: document.getElementById("thermalConductivity"),
     rho: document.getElementById("rho"),
-    cp: document.getElementById("cp")
+    cp: document.getElementById("cp"),
+    meltingTemperature: document.getElementById("meltingTemperature")
 });
 
 const formValues = () => {
@@ -101,8 +103,8 @@ const drawPlots = () => {
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
             z[j][i] = rosenthal(x[i], y[j], 0, values.initialTemp, values.power, values.thermalConductivity, values.velocity, alpha);
-            if (z[j][i] > 3000) {
-                z[j][i] = 3000;
+            if (z[j][i] > values.meltingTemperature) {
+                z[j][i] = values.meltingTemperature;
             }  // set maximum value
         }
     }
@@ -127,10 +129,11 @@ const drawPlots = () => {
             text: 'X-Y Plot'
         },
         xaxis: {
-            text: 'X Axis [m]'
+            title: 'X Axis [m]'
         },
-        YAXIS: {
-            text: 'Y Axis [m]'
+        yaxis: {
+            scaleanchor: "x",
+            title: 'Y Axis [m]'
         }
     };
 
