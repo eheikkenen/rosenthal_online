@@ -25,14 +25,12 @@ const setFormFromUrlBar = () => {
         elements[key].step = modelParams[key].step
     }
 
-}
+};
 
 const setUrlBarFromForm = () => {
     const searchString = (new URLSearchParams(formValues())).toString();
     history.replaceState(null, '', "?" + searchString)
-}
-
-var foo;
+};
 
 const getUrlParams = () => {
     let params = {...modelParamDefaults};
@@ -40,7 +38,6 @@ const getUrlParams = () => {
 
     for (const [key, value] of searchParams) {
         if (key in modelParams) {
-            foo = searchParams;
             const {min: min, max: max} = modelParams[key];
             if (value !== "" && Number(value) >= min && Number(value) <= max) {
                 params[key] = Number(value);
@@ -85,8 +82,6 @@ const drawPlots = () => {
 
     const values = formValues();
 
-    const steps = 500;
-
     // declare vars
     const size = 500, x = new Array(size), y = new Array(size), z = new Array(size);
 
@@ -101,8 +96,8 @@ const drawPlots = () => {
     const alpha = values.thermalConductivity / (8000 * 460);
 
     // get temperatures
-    for (let i = 0; i < steps; i++) {
-        for (let j = 0; j < steps; j++) {
+    for (let i = 0; i < size; i++) {
+        for (let j = 0; j < size; j++) {
             z[j][i] = rosenthal(x[i], y[j], 0, values.initialTemp, values.power, values.thermalConductivity, values.velocity, alpha);
             if (z[j][i] > 3000) {
                 z[j][i] = 3000;
