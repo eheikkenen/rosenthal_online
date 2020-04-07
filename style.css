@@ -58,8 +58,8 @@ body {
 }
 
 .control label {
-    margin-right: 10px;
-    font-size: 2em;
+    margin-right: 20px;
+    font-size: 1em;
 }
 
 .controls .graph-bounds {
@@ -88,4 +88,27 @@ body {
 .pill-nav a.active {
     background-color: dodgerblue;
     color: white;
+}
+
+#plotlyDiv {
+    margin: 10px auto;
+    /*width: 500px;*/
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*padding: 10px;*/
+}
+
+.controls .heading {
+    font-size: 2em;
+}
+
+.control .input-box {
+    display: flex;
+}
+
+.control .input-box input {margin-right: 5px;}
+
+.materials {
+    display: flex;
+    justify-content: space-evenly;
 }
