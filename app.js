@@ -144,5 +144,66 @@ const drawPlots = () => {
     Plotly.newPlot('plotlyDiv', data, layout);
 };
 
-onFormChange();
+const setButtonActive = () => {
+    // Get the container element
+    const btnContainer = document.getElementById("selectableMaterials");
 
+    // Get all buttons with class="btn" inside the container
+    const btns = btnContainer.getElementsByClassName("btn");
+
+    // Loop through the buttons and add the active class to the current/clicked button
+    for (let i = 0; i < btns.length; i++) {
+        console.log(btns.length)
+        btns[i].addEventListener("click", function() {
+            const current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    }
+};
+
+const setDefaults316 = () => {
+    const params = getUrlParams();
+    const elements = formElements();
+    elements["thermalConductivity"].value = 20;
+    elements["rho"].value = 8000;
+    elements["cp"].value = 500;
+    elements["meltingTemperature"].value = 1660;
+    // setButtonActive();
+    drawPlots();
+};
+
+const setDefaultsTitanium = () => {
+    const params = getUrlParams();
+    const elements = formElements();
+    elements["thermalConductivity"].value = 6.7;
+    elements["rho"].value = 4430;
+    elements["cp"].value = 526;
+    elements["meltingTemperature"].value = 1900;
+    // setButtonActive();
+    drawPlots();
+};
+
+const setDefaultsInconel = () => {
+    const params = getUrlParams();
+    const elements = formElements();
+    elements["thermalConductivity"].value = 11.4;
+    elements["rho"].value = 8200;
+    elements["cp"].value = 435;
+    elements["meltingTemperature"].value = 1575;
+    // setButtonActive();
+    drawPlots();
+};
+
+const setDefaultsAluminum = () => {
+    const params = getUrlParams();
+    const elements = formElements();
+    elements["thermalConductivity"].value = 113;
+    elements["rho"].value = 2670;
+    elements["cp"].value = 900;
+    elements["meltingTemperature"].value = 850;
+    // setButtonActive();
+    drawPlots();
+};
+
+onFormChange();

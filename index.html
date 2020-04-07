@@ -12,15 +12,24 @@
     <div id='plotlyDiv'></div>
 
     <div class="controls">
+
+        <div class="heading">Plot Scale</div>
+
         <div class="dimensions">
             <div class="control dimension">
-                <label for="x">Domain [m]</label>
-                <input type="number" id="x" name="x" onchange="onFormChange()">
+                <label for="x">Domain</label>
+                <div class="input-box">
+                    <input type="number" id="x" onchange="onFormChange()">
+                    <div class="unit">[m]</div>
+                </div>
             </div>
 
-            <div class="control dimension" style="margin: 0 30px;">
-                <label for="y">Range [m]</label>
-                <input type="number" id="y" name="y" onchange="onFormChange()">
+            <div class="control dimension">
+                <label for="y">Range</label>
+                <div class="input-box">
+                    <input type="number" id="y" onchange="onFormChange()">
+                    <div class="unit">[m]</div>
+                </div>
             </div>
 
 <!--            <div class="control dimension">-->
@@ -29,43 +38,84 @@
 <!--            </div>-->
         </div>
 
+        <div class="heading">Parameters</div>
+
         <div class="control">
-            <label for="initialTemp">Preheat Temperature [K]</label>
-            <input type="number" id="initialTemp" onchange="onFormChange()">
+            <label for="initialTemp">Preheat Temperature</label>
+            <div class="input-box">
+                <input type="number" id="initialTemp" onchange="onFormChange()">
+                <div class="unit">[K]</div>
+            </div>
         </div>
 
         <div class="control">
-            <label for="power">Power [W]</label>
-            <input type="number" id="power" onchange="onFormChange()">
+            <label for="power">Power</label>
+            <div class="input-box">
+                <input type="number" id="power" onchange="onFormChange()">
+                <div class="unit">[W]</div>
+            </div>
         </div>
 
         <div class="control">
-            <label for="velocity">Velocity [m/s]</label>
-            <input type="number" id="velocity" onchange="onFormChange()">
+            <label for="velocity">Velocity</label>
+            <div class="input-box">
+                <input type="number" id="velocity" onchange="onFormChange()">
+                <div class="unit">[m/s]</div>
+            </div>
+        </div>
+
+        <div class="heading">Materials</div>
+
+<!--        <div class="materials">-->
+<!--            <input type="radio" id="male" name="gender" value="male">-->
+<!--            <label for="male">316L</label><br>-->
+<!--            <input type="radio" id="male" name="gender" value="male">-->
+<!--            <label for="male">Ti-6Al-4V</label><br>-->
+<!--            <input type="radio" id="male" name="gender" value="male">-->
+<!--            <label for="male">Inconel 718</label><br>-->
+<!--            <input type="radio" id="male" name="gender" value="male">-->
+<!--            <label for="male">Al10SiMg</label><br>-->
+<!--        </div>-->
+
+        <div class="pill-nav" id="selectableMaterials">
+            <a class="btn" onclick="setDefaults316()">316L</a>
+<!--            <a onclick="setDefaults316()">316L</a>-->
+            <a class="btn" onclick="setDefaultsTitanium()">Ti-6Al-4V</a>
+            <a class="btn" onclick="setDefaultsInconel()">Inconel 718</a>
+            <a class="btn" onclick="setDefaultsAluminum()">Al10SiMg</a>
+<!--            <a onclick="#custom">Custom</a>-->
         </div>
 
         <div class="control">
-            Material Properties
+            <label for="thermalConductivity">Thermal Conductivity</label>
+            <div class="input-box">
+                <input type="number" id="thermalConductivity" onchange="onFormChange()">
+                <div class="unit">[W/(m*K)]</div>
+            </div>
         </div>
 
         <div class="control">
-            <label for="thermalConductivity">Thermal Conductivity [W/(m*K)]</label>
-            <input type="number" id="thermalConductivity" onchange="onFormChange()">
+            <label for="rho">Density</label>
+            <div class="input-box">
+                <input type="number" id="rho" onchange="onFormChange()">
+                <div class="unit">[kg/m<sup>3</sup>]</div>
+            </div>
         </div>
 
         <div class="control">
-            <label for="rho">Density [kg/m<sup>3</sup>]</label>
-            <input type="number" id="rho" onchange="onFormChange()">
+            <label for="cp">Specific Heat</label>
+            <div class="input-box">
+                <input type="number" id="cp" onchange="onFormChange()">
+                <div class="unit">[J/(kg*K)]</div>
+            </div>
         </div>
 
         <div class="control">
-            <label for="cp">Specific Heat [J/(kg*K)]</label>
-            <input type="number" id="cp" onchange="onFormChange()">
-        </div>
-
-        <div class="control">
-            <label for="meltingTemperature">T<sub>melting</sub> [K]</label>
-            <input type="number" id="meltingTemperature" onchange="onFormChange()">
+            <label for="meltingTemperature">T<sub>melting</sub></label>
+            <div class="input-box">
+                <input type="number" id="meltingTemperature" onchange="onFormChange()">
+                <div class="unit">[K]</div>
+            </div>
         </div>
 
     </div>
