@@ -1,11 +1,10 @@
 const modelParams = {
     x: {min: 0.001, max: 0.010, step: 0.001, default: 0.003},
     y: {min: 0.001, max: 0.010, step: 0.001, default: 0.001},
-    // z: {min: 0.001, max: 0.010, step: 0.001, default: 0.001},
-    initialTemp: {min: 273, max: 2000, step: 25, default: 393},
-    power: {min: 1, max: 5000, step: 10, default: 200},
-    thermalConductivity: {min: 1, max: 500, step: 1, default: 20},
-    velocity: {min: 0.001, max: 5, step: 0.01, default: 1},
+    initialTemp: {min: 0, max: 5000, step: 25, default: 393},
+    power: {min: 1, max: 10000, step: 10, default: 200},
+    thermalConductivity: {min: 0.1, max: 5000, step: 1, default: 20},
+    velocity: {min: 0.00001, max: 500, step: 0.01, default: 1},
     rho: {min: 1, max: 20000, step: 100, default: 8000},
     cp: {min: 1, max: 1500, step: 50, default: 500},
     meltingTemperature: {min: 200, max: 5000, step: 100, default: 1660}
@@ -17,49 +16,9 @@ const modelParamDefaults = Object.fromEntries(
     )
 );
 
-const setFormFromUrlBar = () => {
-    const params = getUrlParams();
-    const elements = formElements();
-
-    for (let key in params) {
-        elements[key].value = params[key];
-        elements[key].min = modelParams[key].min
-        elements[key].max = modelParams[key].max
-        elements[key].step = modelParams[key].step
-    }
-
-};
-
-const setUrlBarFromForm = () => {
-    const searchString = (new URLSearchParams(formValues())).toString();
-    history.replaceState(null, '', "?" + searchString)
-};
-
-const getUrlParams = () => {
-    let params = {...modelParamDefaults};
-    const searchParams = new URLSearchParams(window.location.search);
-
-    for (const [key, value] of searchParams) {
-        if (key in modelParams) {
-            const {min: min, max: max} = modelParams[key];
-            if (value !== "" && Number(value) >= min && Number(value) <= max) {
-                params[key] = Number(value);
-            }
-        }
-    }
-    return params
-};
-
-const onFormChange = () => {
-    setUrlBarFromForm();
-    setFormFromUrlBar();
-    drawPlots();
-};
-
 const formElements = () => ({
     x: document.getElementById("x"),
     y: document.getElementById("y"),
-    // z: document.getElementById("z"),
     power: document.getElementById("power"),
     initialTemp: document.getElementById("initialTemp"),
     velocity: document.getElementById("velocity"),
@@ -124,10 +83,6 @@ const drawPlots = () => {
     }
     ];
 
-    //var layout = {
-    //  title: 'X-Y Plot',
-    //}
-
     const layout = {
         title: {
             text: 'X-Y Plot'
@@ -144,66 +99,49 @@ const drawPlots = () => {
     Plotly.newPlot('plotlyDiv', data, layout);
 };
 
-const setButtonActive = () => {
-    // Get the container element
-    const btnContainer = document.getElementById("selectableMaterials");
-
-    // Get all buttons with class="btn" inside the container
-    const btns = btnContainer.getElementsByClassName("btn");
-
-    // Loop through the buttons and add the active class to the current/clicked button
-    for (let i = 0; i < btns.length; i++) {
-        console.log(btns.length)
-        btns[i].addEventListener("click", function() {
-            const current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-        });
-    }
-};
-
 const setDefaults316 = () => {
-    const params = getUrlParams();
     const elements = formElements();
     elements["thermalConductivity"].value = 20;
     elements["rho"].value = 8000;
     elements["cp"].value = 500;
     elements["meltingTemperature"].value = 1660;
-    // setButtonActive();
     drawPlots();
 };
 
 const setDefaultsTitanium = () => {
-    const params = getUrlParams();
     const elements = formElements();
     elements["thermalConductivity"].value = 6.7;
     elements["rho"].value = 4430;
     elements["cp"].value = 526;
     elements["meltingTemperature"].value = 1900;
-    // setButtonActive();
     drawPlots();
 };
 
 const setDefaultsInconel = () => {
-    const params = getUrlParams();
     const elements = formElements();
     elements["thermalConductivity"].value = 11.4;
     elements["rho"].value = 8200;
     elements["cp"].value = 435;
     elements["meltingTemperature"].value = 1575;
-    // setButtonActive();
     drawPlots();
 };
 
 const setDefaultsAluminum = () => {
-    const params = getUrlParams();
     const elements = formElements();
     elements["thermalConductivity"].value = 113;
     elements["rho"].value = 2670;
     elements["cp"].value = 900;
     elements["meltingTemperature"].value = 850;
-    // setButtonActive();
     drawPlots();
 };
 
-onFormChange();
+
+let params = {...modelParamDefaults};
+const elements = formElements();
+for (let key in params) {
+    elements[key].value = params[key];
+    elements[key].min = modelParams[key].min
+    elements[key].max = modelParams[key].max
+    elements[key].step = modelParams[key].step
+}
+drawPlots();
