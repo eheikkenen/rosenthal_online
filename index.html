@@ -32,10 +32,10 @@
                 </div>
             </div>
 
-<!--            <div class="control dimension">-->
-<!--                <label for="z">Z</label>-->
-<!--                <input type="number" id="z" name="z" onchange="onFormChange()">-->
-<!--            </div>-->
+            <!--            <div class="control dimension">-->
+            <!--                <label for="z">Z</label>-->
+            <!--                <input type="number" id="z" name="z" onchange="onFormChange()">-->
+            <!--            </div>-->
         </div>
 
         <div class="heading">Parameters</div>
@@ -66,25 +66,56 @@
 
         <div class="heading">Materials</div>
 
-<!--        <div class="materials">-->
-<!--            <input type="radio" id="male" name="gender" value="male">-->
-<!--            <label for="male">316L</label><br>-->
-<!--            <input type="radio" id="male" name="gender" value="male">-->
-<!--            <label for="male">Ti-6Al-4V</label><br>-->
-<!--            <input type="radio" id="male" name="gender" value="male">-->
-<!--            <label for="male">Inconel 718</label><br>-->
-<!--            <input type="radio" id="male" name="gender" value="male">-->
-<!--            <label for="male">Al10SiMg</label><br>-->
-<!--        </div>-->
+        <div class="pill-group">
+            <span class="pill-item">
+                <input type="radio" id="316L" name="material" value="316L">
+                <label for="316L">316L</label>
+            </span>
 
-        <div class="pill-nav" id="selectableMaterials">
-            <a class="btn" onclick="setDefaults316()">316L</a>
-<!--            <a onclick="setDefaults316()">316L</a>-->
-            <a class="btn" onclick="setDefaultsTitanium()">Ti-6Al-4V</a>
-            <a class="btn" onclick="setDefaultsInconel()">Inconel 718</a>
-            <a class="btn" onclick="setDefaultsAluminum()">Al10SiMg</a>
-<!--            <a onclick="#custom">Custom</a>-->
+            <span class="pill-item">
+                <input type="radio" id="Ti-6Al-4V" name="material" value="Ti-6Al-4V">
+                <label for="Ti-6Al-4V">Ti-6Al-4V</label>
+            </span>
+
+            <span class="pill-item">
+                <input type="radio" id="In 718" name="material" value="In 718">
+                <label for="In 718">In 718</label>
+            </span>
+
+            <span class="pill-item">
+                <input type="radio" id="Al10SiMg" name="material" value="Al10SiMg">
+                <label for="Al10SiMg">Al10SiMg</label>
+            </span>
+
+            <span class="pill-item">
+                <input type="radio" id="Custom" name="material" value="Custom">
+                <label for="Custom">Custom</label>
+            </span>
         </div>
+
+        <!--        <fieldset class="r-pill">-->
+        <!--            <legend>Group Title</legend>-->
+
+        <!--            <div class="r-pill__group"> &lt;!&ndash; optional styling wrapper &ndash;&gt;-->
+        <!--                <span class="r-pill__item">-->
+        <!--	    <input type="radio" id="r1" name="radios" checked>-->
+        <!--	    <label for="r1">Option 1</label>-->
+        <!--	  </span>-->
+        <!--                <span class="r-pill__item">-->
+        <!--	    <input type="radio" id="r2" name="radios">-->
+        <!--	    <label for="r2">Option 2</label>-->
+        <!--	  </span>-->
+        <!--            </div>-->
+        <!--        </fieldset>-->
+
+        <!--        <div class="pill-nav" id="selectableMaterials">-->
+        <!--            <a class="btn" onclick="setDefaults316()">316L</a>-->
+        <!--&lt;!&ndash;            <a onclick="setDefaults316()">316L</a>&ndash;&gt;-->
+        <!--            <a class="btn" onclick="setDefaultsTitanium()">Ti-6Al-4V</a>-->
+        <!--            <a class="btn" onclick="setDefaultsInconel()">Inconel 718</a>-->
+        <!--            <a class="btn" onclick="setDefaultsAluminum()">Al10SiMg</a>-->
+        <!--&lt;!&ndash;            <a onclick="#custom">Custom</a>&ndash;&gt;-->
+        <!--        </div>-->
 
         <div class="control">
             <label for="thermalConductivity">Thermal Conductivity</label>

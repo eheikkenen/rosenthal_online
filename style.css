@@ -108,7 +108,58 @@ body {
 
 .control .input-box input {margin-right: 5px;}
 
-.materials {
-    display: flex;
-    justify-content: space-evenly;
+.pills {
+    /*display: block;*/
+    /*margin-inline-start: 2px;*/
+    /*margin-inline-end: 2px;*/
+    /*padding-block-start: 0.35em;*/
+    /*padding-inline-start: 0.75em;*/
+    /*padding-inline-end: 0.75em;*/
+    /*padding-block-end: 0.625em;*/
+    /*min-width: min-content;*/
+}
+
+.pill-group {
+    background: #fafafa;
+    border: 1px solid #083851;
+    border-radius: 2em;
+    display: inline-block;
+    padding: .25em;
+}
+
+.pill-item {
+    display: inline-block;
+    position: relative;
+}
+
+.pill-item input {
+    background: none;
+    border: 2px solid;
+    height: 100%;
+    left: 0;
+    opacity: .00001;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+.pill-item label {
+    border-radius: 2em;
+    border: 2px solid transparent;
+    color: #083851;
+    display: block;
+    padding: .25em .75em;
+}
+
+.pill-item input:hover ~ label,
+.pill-item label:hover {
+    background: #E2F1FD;
+    border-color: #2196f3;
+}
+
+.pill-item input:checked + label:hover,
+.pill-item input:checked + label {
+    background: #2196f3;
+    color: #fff;
 }
