@@ -108,23 +108,13 @@ body {
 
 .control .input-box input {margin-right: 5px;}
 
-.pills {
-    /*display: block;*/
-    /*margin-inline-start: 2px;*/
-    /*margin-inline-end: 2px;*/
-    /*padding-block-start: 0.35em;*/
-    /*padding-inline-start: 0.75em;*/
-    /*padding-inline-end: 0.75em;*/
-    /*padding-block-end: 0.625em;*/
-    /*min-width: min-content;*/
-}
-
 .pill-group {
     background: #fafafa;
     border: 1px solid #083851;
     border-radius: 2em;
     display: inline-block;
     padding: .25em;
+    margin: 5px;
 }
 
 .pill-item {
