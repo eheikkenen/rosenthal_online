@@ -106,7 +106,17 @@ body {
     display: flex;
 }
 
-.control .input-box input {margin-right: 5px;}
+.control .input-box input {
+    margin-right: 5px;
+}
+
+.control .values {
+    display: flex
+}
+
+.control .values .value {
+    margin-right: 5px;
+}
 
 .pill-group {
     background: #fafafa;

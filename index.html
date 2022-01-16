@@ -1,10 +1,12 @@
 <html lang="en">
+
 <head>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Rosenthal Online</title>
 </head>
+
 <body>
 <div class="app">
     <div class="title">Rosenthal Model</div>
@@ -116,8 +118,26 @@
         <div class="control">
             <label for="meltingTemperature">T<sub>melting</sub></label>
             <div class="input-box">
-                <input type="number" id="meltingTemperature" onchange="drawPlots()">
+                <input id="meltingTemperature" onchange="drawPlots()" type="number">
                 <div class="unit">[K]</div>
+            </div>
+        </div>
+
+        <div class="heading">Measurements</div>
+
+        <div class="control">
+            <label for="meltPoolDepth">Melt Pool Depth</label>
+            <div class="values">
+                <div class="value" id="meltPoolDepth"></div>
+                <div class="unit">[m]</div>
+            </div>
+        </div>
+
+        <div class="control">
+            <label for="meltPoolWidth">Melt Pool Width</label>
+            <div class="values">
+                <div class="value" id="meltPoolWidth"></div>
+                <div class="unit">[m]</div>
             </div>
         </div>
 

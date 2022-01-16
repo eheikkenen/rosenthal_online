@@ -25,7 +25,9 @@ const formElements = () => ({
     thermalConductivity: document.getElementById("thermalConductivity"),
     rho: document.getElementById("rho"),
     cp: document.getElementById("cp"),
-    meltingTemperature: document.getElementById("meltingTemperature")
+    meltingTemperature: document.getElementById("meltingTemperature"),
+    meltPoolDepth: document.getElementById("meltPoolDepth"),
+    meltPoolWidth: document.getElementById("meltPoolWidth")
 });
 
 const formValues = () => {
@@ -67,6 +69,14 @@ const drawPlots = () => {
             }  // set maximum value
         }
     }
+
+    // calculate melt pool statistics [meters]
+    // d = np.sqrt((2 * q) / (np.e * np.pi * rho * c * (tf - t0) * v))  # melt pool depth [m]
+    // w = 2 * d  # melt pool width [m]
+    const depth = Math.sqrt((2 * values.power) / (Math.E * Math.PI * values.rho * values.cp * (values.meltingTemperature - values.initialTemp) * values.velocity));
+    const width = 2 * depth;
+    document.getElementById("meltPoolDepth").innerHTML = depth.toPrecision(3);
+    document.getElementById("meltPoolWidth").innerHTML = width.toPrecision(3);
 
     const data = [{
         z: z,
